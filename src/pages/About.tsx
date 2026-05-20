@@ -70,6 +70,7 @@ export default function About() {
       <PageHero
         title="About Our Company"
         accent="last"
+        eyebrow="Company profile"
         subtitle=" Film Ceylon is an international production gateway to Sri Lanka, powered by Ravana Industries."
       />
 
@@ -297,11 +298,10 @@ export default function About() {
       <CTABanner
         headline="Start Your Journey"
         description="Connect with our line producers to receive a practical production blueprint for your upcoming filming schedule in Sri Lanka."
-        buttonText="Get in Touch"
+        buttonText="Start the Conversation"
         buttonHref="/contact"
         variant="dark"
       />
     </>
   );
 }
-

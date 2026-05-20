@@ -21,6 +21,7 @@ export default function Permits() {
       <PageHero
         title="Film Permits"
         accent="last"
+        eyebrow="Regulatory support"
         subtitle="Smooth, compliant, and structured governmental coordination. We navigate the complete Sri Lankan filming approval process on behalf of your production."
       />
 
@@ -94,7 +95,7 @@ export default function Permits() {
       <CTABanner
         headline="Secure Your Permits"
         description="Plan ahead. Official national filming approvals require structured script submissions and processing timelines."
-        buttonText="Inquire About Permits"
+        buttonText="Discuss Permit Requirements"
         buttonHref="/contact"
         variant="light"
       />

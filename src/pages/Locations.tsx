@@ -53,6 +53,7 @@ export default function Locations() {
       <PageHero
         title="Film Locations"
         accent="last"
+        eyebrow="Scouting reference"
         subtitle="Explore the incredible geographical diversity of Sri Lanka. From mist-covered mountains to coastal dunes, all within a few hours' drive."
       />
 
@@ -136,7 +137,7 @@ export default function Locations() {
       <CTABanner
         headline="Request Location Pack"
         description="Looking for specific aesthetic parameters? Let our experienced scouting team prepare a customized location portfolio for your project."
-        buttonText="Contact Location Scout"
+        buttonText="Request Location Scout"
         buttonHref="/contact"
         variant="light"
       />

@@ -46,6 +46,7 @@ export default function Europe() {
       <PageHero
         title="Europe & North America"
         accent="last"
+        eyebrow="International desk"
         subtitle="Dedicated line production, fixer services, and documentary support for European and North American producers shooting in Sri Lanka."
       />
 

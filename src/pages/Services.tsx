@@ -110,44 +110,91 @@ const servicesData = [
   }
 ];
 
+const serviceGroups = [
+  {
+    title: 'Pre-Production Setup',
+    description: 'Everything needed to price, permit and scope the shoot before the first crew call.',
+    serviceTitles: ['Film Permits and Official Coordination', 'Location Scouting', 'Line Production'],
+  },
+  {
+    title: 'On-Ground Production',
+    description: 'The local operating layer for crew, vendors, transport, accommodation and daily execution.',
+    serviceTitles: ['Crew and Equipment', 'Transport, Hotels and Logistics'],
+  },
+  {
+    title: 'Talent, Access and Research',
+    description: 'Specialized support when the production depends on people access, casting or documentary fieldwork.',
+    serviceTitles: ['Casting and Extras', 'Fixers, Translators and Researchers'],
+  },
+  {
+    title: 'Second Unit and Remote Workflows',
+    description: 'When your producers need Sri Lanka coverage without moving a full international team.',
+    serviceTitles: ['Remote and Second-Unit Production'],
+  },
+];
+
 export default function Services() {
   return (
     <>
       <PageHero
         title="Complete Production Services"
         accent="last"
+        eyebrow="What we handle"
         subtitle="From the first location idea to the final wrap report, we manage the Sri Lankan side of your shoot with precision and international standard execution."
       />
 
       <section className="py-24 px-6 md:px-12 bg-neutral-950 text-[#F4F4F0] rounded-[3rem] md:rounded-[5rem] relative z-20">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20">
+          <div className="mb-16 md:mb-20">
             <span className="text-[#FF4A00] font-bold uppercase tracking-widest text-sm block mb-4">
               Comprehensive Solutions
             </span>
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter max-w-3xl leading-tight">
               End-to-End Line Production & Fixer Services
             </h2>
+            <p className="mt-6 max-w-3xl text-base md:text-lg font-medium leading-relaxed text-neutral-400">
+              The work is grouped the way producers usually budget and schedule it: early approvals, ground execution, people access, and remote capture.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {servicesData.map((service, index) => (
-              <ServiceCard
-                key={service.title}
-                index={index + 1}
-                title={service.title}
-                description={service.description}
-                items={service.items}
-              />
+          <div className="space-y-16 md:space-y-20">
+            {serviceGroups.map((group) => (
+              <section key={group.title} className="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-14">
+                <div className="lg:sticky lg:top-8 h-fit">
+                  <span className="mb-4 block text-xs font-bold uppercase tracking-[0.24em] text-[#FF4A00]">
+                    Service Group
+                  </span>
+                  <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-tight text-white">
+                    {group.title}
+                  </h3>
+                  <p className="mt-4 text-sm md:text-base font-medium leading-relaxed text-neutral-400">
+                    {group.description}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 gap-12">
+                  {servicesData
+                    .filter((service) => group.serviceTitles.includes(service.title))
+                    .map((service) => (
+                      <ServiceCard
+                        key={service.title}
+                        index={servicesData.findIndex((item) => item.title === service.title) + 1}
+                        title={service.title}
+                        description={service.description}
+                        items={service.items}
+                      />
+                    ))}
+                </div>
+              </section>
             ))}
           </div>
         </div>
       </section>
 
       <CTABanner
-        headline="Ready to Shoot?"
+        headline="Build the Budget"
         description="Send us your script, scene brief, song concept or documentary outline. We will help you build a practical Sri Lanka production plan."
-        buttonText="Request Production Support"
+        buttonText="Request Production Estimate"
         buttonHref="/contact"
         variant="light"
       />

@@ -9,6 +9,45 @@ const showcaseVideo =
 const showcasePoster =
   'https://images.pexels.com/photos/32398208/pexels-photo-32398208.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1600';
 
+const audienceDesks = [
+  {
+    title: 'Indian Cinema',
+    market: 'Kollywood, Bollywood, Tollywood',
+    link: '/indian-film-desk',
+    image: 'https://images.pexels.com/photos/36847090/pexels-photo-36847090.jpeg',
+    intro: 'Fast-moving overseas schedules, song shoots, action inserts and star-led logistics.',
+    shoots: ['Songs & montages', 'Second unit', 'Action inserts'],
+    support: ['Tamil-speaking coordination', 'Crowd & permit handling', 'Hotels, vehicles, extras'],
+  },
+  {
+    title: 'Hollywood',
+    market: 'US studios, streamers',
+    link: '/hollywood',
+    image: 'https://images.pexels.com/photos/8088386/pexels-photo-8088386.jpeg',
+    intro: 'Structured line production, second-unit support and controlled compliance workflows.',
+    shoots: ['Second unit', 'Scenic plates', 'Studio-backed documentary work'],
+    support: ['Risk & release paperwork', 'Secure logistics', 'Crew and vendor oversight'],
+  },
+  {
+    title: 'Europe',
+    market: 'Docs, campaigns, factual TV',
+    link: '/europe',
+    image: 'https://images.pexels.com/photos/11677392/pexels-photo-11677392.jpeg',
+    intro: 'Transparent budgeting, documentary access, and field-ready local coordination.',
+    shoots: ['Public broadcast docs', 'Commercials', 'Art-house features'],
+    support: ['Research & interview access', 'Auditable accounting', 'Trilingual field crews'],
+  },
+  {
+    title: 'North America',
+    market: 'Indies, streamers, diaspora stories',
+    link: '/europe',
+    image: 'https://images.pexels.com/photos/32398194/pexels-photo-32398194.jpeg',
+    intro: 'Sri Lanka execution for compact crews that still need high communication standards.',
+    shoots: ['Streaming docs', 'Music videos', 'Independent features'],
+    support: ['Remote producer support', 'Location packs', 'Daily reporting & safety'],
+  },
+];
+
 function WhySriLankaContent() {
   return (
     <section className="h-screen py-12 md:py-16 px-6 md:px-12 bg-[#F4F4F0] relative z-10 flex items-center">
@@ -68,29 +107,94 @@ function ParallaxVideoReveal() {
   const clipScale = useTransform(scrollYProgress, [0, 0.85], [1, 1.05]);
 
   return (
-    <div ref={container} className="relative h-[220vh] bg-[#F4F4F0]">
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <WhySriLankaContent />
+    <>
+      {/* Mobile Stacked Layout (Clean scrolling & fully visible content) */}
+      <div className="block md:hidden px-6 mb-16">
+        {/* Rounded Video Section */}
+        <div className="relative h-[40vh] w-full overflow-hidden bg-neutral-950 rounded-[2rem] shadow-xl">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster={showcasePoster}
+            className="absolute inset-0 w-full h-full object-cover contrast-125 brightness-75"
+            aria-label="Sri Lanka production location footage"
+          >
+            <source src={showcaseVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-neutral-950/20" />
+        </div>
+
+        {/* Why Sri Lanka Content */}
+        <div className="py-12 bg-[#F4F4F0]">
+          <div className="w-full">
+            <h2 className="text-4xl font-black uppercase tracking-tighter leading-[0.85] break-words mb-6">
+              Why <br />
+              <span className="text-[#FF4A00]">Sri Lanka?</span>
+            </h2>
+            <div className="text-base font-medium leading-relaxed flex flex-col gap-5">
+              <p>
+                Sri Lanka is one of South Asia's most versatile filming destinations. Within a few hours, a production
+                can move from beaches to tea mountains, from colonial streets to modern cityscapes, from temples to
+                fishing villages, from luxury resorts to wild landscapes.
+              </p>
+              <p>
+                For international producers, this means more visual value, shorter internal travel, strong cultural
+                variety and cost-effective production possibilities.
+              </p>
+              <Link
+                to="/locations"
+                className="text-[#FF4A00] font-black uppercase tracking-tight flex items-center gap-2 group w-fit mt-2"
+              >
+                Explore Locations <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              </Link>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              {[
+                'Beaches', 'Tea Estates', 'Railways', 'Colonial Towns', 'Luxury Resorts',
+                'Temples', 'Jungles', 'Fishing Villages', 'Urban Colombo', 'Jaffna',
+                'Galle Fort', 'Ella', 'Trincomalee', 'Kandy',
+              ].map((loc) => (
+                <span
+                  key={loc}
+                  className="border-2 border-neutral-300 rounded-full px-4 py-2 font-bold uppercase tracking-tight text-xs hover:bg-neutral-950 hover:text-white hover:border-neutral-950 transition-colors cursor-default flex items-center gap-2 bg-white"
+                >
+                  <MapPin className="w-3.5 h-3.5" /> {loc}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      <motion.div
-        style={{ opacity: clipOpacity, y: clipY, scale: clipScale }}
-        className="sticky top-0 -mt-[100vh] h-screen w-full z-30 overflow-hidden bg-neutral-950"
-      >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          poster={showcasePoster}
-          className="absolute inset-0 w-full h-full object-cover contrast-125 brightness-75"
-          aria-label="Sri Lanka production location footage"
+
+      {/* Desktop Parallax Layout (Beautiful full-screen reveal with rounded corners) */}
+      <div ref={container} className="hidden md:block relative h-[220vh] bg-[#F4F4F0]">
+        <div className="sticky top-0 h-screen overflow-hidden">
+          <WhySriLankaContent />
+        </div>
+        <motion.div
+          style={{ opacity: clipOpacity, y: clipY, scale: clipScale }}
+          className="sticky top-0 -mt-[100vh] h-screen w-full z-30 overflow-hidden bg-neutral-950 rounded-[5rem]"
         >
-          <source src={showcaseVideo} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-neutral-950/20" />
-      </motion.div>
-    </div>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster={showcasePoster}
+            className="absolute inset-0 w-full h-full object-cover contrast-125 brightness-75"
+            aria-label="Sri Lanka production location footage"
+          >
+            <source src={showcaseVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-neutral-950/20" />
+        </motion.div>
+      </div>
+    </>
   );
 }
 
@@ -99,7 +203,7 @@ export default function Home() {
     <>
       {/* ── Hero ── */}
       {/* ── Hero ── */}
-      <section className="relative min-h-[100svh] pt-32 pb-16 px-6 md:px-12 flex flex-col justify-end overflow-hidden bg-neutral-950 text-white rounded-b-[3rem] md:rounded-b-[5rem]">
+      <section className="relative h-[100svh] px-6 pb-8 pt-20 md:px-12 md:pb-10 md:pt-24 overflow-hidden bg-neutral-950 text-white rounded-b-[3rem] md:rounded-b-[5rem]">
         {/* Background Video */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <video
@@ -118,201 +222,138 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-transparent to-transparent" />
         </div>
 
-        <div className="relative z-10 text-[15vw] md:text-[12vw] leading-[0.85] font-black tracking-tighter uppercase">
-          <div className="overflow-hidden">
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease }}>
-              Local
-            </motion.div>
-          </div>
-          <div className="overflow-hidden flex items-center gap-4 md:gap-8">
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.15, ease }}>
-              Access
-            </motion.div>
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1, delay: 0.5, ease }}
-              className="w-[15vw] h-[7vw] rounded-full overflow-hidden shrink-0 mt-4 md:mt-8 bg-neutral-900 border border-neutral-800"
+        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-7rem)] max-w-7xl flex-col justify-between">
+          <div className="max-w-3xl">
+            <p className="mb-5 max-w-2xl text-[11px] sm:text-sm font-bold uppercase tracking-[0.26em] text-[#FF4A00]">
+              Sri Lanka line production for films, documentaries, commercials and music videos
+            </p>
+            <motion.h1
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1, ease }}
+              className="max-w-4xl text-[clamp(4.2rem,12.6vw,9.45rem)] font-black uppercase tracking-tighter leading-[0.9]"
             >
-              <img
-                src="https://images.pexels.com/photos/32398208/pexels-photo-32398208.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=800"
-                className="w-full h-full object-cover grayscale brightness-90"
-                alt="Sri Lanka aerial coastline"
-              />
-            </motion.div>
+              Local access.
+              <br />
+              International
+              <br />
+              <span className="text-[#FF4A00]">standards.</span>
+            </motion.h1>
           </div>
-          <div className="overflow-hidden">
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease }}>
-              Inter
-            </motion.div>
-          </div>
-          <div className="overflow-hidden flex items-center gap-4 md:gap-8">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1, delay: 0.6, ease }}
-              className="hidden md:block w-[15vw] h-[7vw] rounded-full overflow-hidden shrink-0 mt-8 bg-neutral-900 border border-neutral-800"
-            >
-              <img
-                src="https://images.pexels.com/photos/19224452/pexels-photo-19224452.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=800"
-                className="w-full h-full object-cover grayscale brightness-90"
-                alt="Film crew on set"
-              />
-            </motion.div>
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.25, ease }}>
-              National
-            </motion.div>
-          </div>
-          <div className="overflow-hidden text-[#FF4A00]">
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease }}>
-              Standards
-            </motion.div>
-          </div>
-        </div>
 
-        <div className="relative z-10 mt-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-          <p className="max-w-md text-lg md:text-xl font-medium leading-snug text-neutral-300">
-            Line Production Services in Sri Lanka for Indian, European, North American and Hollywood Productions.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="bg-[#FF4A00] text-white rounded-full px-8 py-4 font-bold uppercase tracking-tight hover:bg-white hover:text-neutral-950 transition-colors flex items-center gap-3 group shrink-0"
-            >
-              Get an Estimate <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </Link>
-            <Link
-              to="/locations"
-              className="border-2 border-white text-white rounded-full px-8 py-4 font-bold uppercase tracking-tight hover:bg-white hover:text-neutral-950 transition-colors shrink-0"
-            >
-              Explore Locations
-            </Link>
+          <div className="mt-6 grid gap-5 md:mt-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-6">
+            <div className="max-w-xl">
+              <p className="text-base md:text-xl font-medium leading-snug text-neutral-300">
+                Local permits, locations, crew, logistics and budgeting for international productions filming in Sri Lanka.
+              </p>
+            </div>
+            <div className="flex w-full md:w-auto flex-col sm:flex-row flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="bg-[#FF4A00] text-white rounded-full px-6 md:px-8 py-3.5 md:py-4 font-bold uppercase tracking-tight hover:bg-white hover:text-neutral-950 transition-colors flex items-center justify-center gap-3 group shrink-0"
+              >
+                Request Production Estimate <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              </Link>
+              <Link
+                to="/locations"
+                className="border-2 border-white text-white rounded-full px-6 md:px-8 py-3.5 md:py-4 font-bold uppercase tracking-tight hover:bg-white hover:text-neutral-950 transition-colors shrink-0 text-center"
+              >
+                Scout Locations
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Marquee ── */}
-      <div className="py-6 bg-[#FF4A00] text-neutral-950 flex overflow-hidden whitespace-nowrap border-y-4 border-neutral-950">
-        <motion.div
-          animate={{ x: [0, -1000] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 15 }}
-          className="flex gap-8 items-center shrink-0"
-        >
-          {[...Array(20)].map((_, i) => (
-            <span key={i} className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
-              Sri Lanka on screen •{' '}
-            </span>
-          ))}
-        </motion.div>
-      </div>
+      <div className="h-10 md:h-16 bg-[#F4F4F0]" />
 
-      {/* ── Intro / Short Intro ── */}
-      <section className="py-32 px-6 md:px-12 bg-[#F4F4F0]">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">
-            We help global <br />
-            crews <span className="text-[#FF4A00]">shoot in Sri Lanka</span>
-          </h2>
-          <div className="text-xl md:text-2xl font-medium leading-relaxed flex flex-col gap-8">
-            <p>
-              Sri Lanka offers beaches, colonial cities, railways, tea estates, jungles, temples, luxury resorts,
-              fishing villages, urban skylines and South Asian cultural depth within one compact island.
-            </p>
-            <p>
-              Film Ceylon provides complete line production and fixer support for international crews
-              filming in Sri Lanka — from permits and location scouting to crew, casting, transport, equipment,
-              accommodation, security and production accounting.
+      {/* ── Production Desks ── */}
+      <section className="bg-neutral-950 text-[#F4F4F0] pt-20 pb-24 md:pt-24 md:pb-32 px-6 md:px-12 rounded-t-[3rem] md:rounded-t-[5rem] relative z-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-14 md:mb-18 grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.65fr)] lg:items-end">
+            <div>
+              <span className="mb-5 block text-xs font-bold uppercase tracking-[0.26em] text-[#FF4A00]">
+                Production desks
+              </span>
+              <h2 className="max-w-4xl text-5xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9]">
+                Choose by <span className="text-[#FF4A00]">workflow</span>
+              </h2>
+            </div>
+            <p className="max-w-xl text-lg md:text-xl text-neutral-400 font-medium leading-relaxed">
+              Different producers need different operating rhythms. Pick the desk that matches your market, schedule pressure, paperwork standard and shooting style.
             </p>
           </div>
-        </div>
 
-        {/* Visual grid */}
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-4 h-[60vh] md:h-[80vh]">
-          <div className="col-span-1 md:col-span-2 relative rounded-[2rem] overflow-hidden group bg-neutral-200">
-            <img
-              src="https://images.pexels.com/photos/8390627/pexels-photo-8390627.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              alt="Behind the scenes camera rig"
-            />
-          </div>
-          <div className="relative rounded-[2rem] overflow-hidden group hidden md:block bg-neutral-200">
-            <img
-              src="https://images.pexels.com/photos/4769075/pexels-photo-4769075.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=800"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              alt="Nine Arch Bridge Sri Lanka"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ── Who We Serve ── */}
-      <section className="bg-neutral-950 text-[#F4F4F0] py-32 px-6 md:px-12 rounded-t-[3rem] md:rounded-t-[5rem] relative z-20">
-        <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9]">
-            Who we <br /> <span className="text-[#FF4A00]">Serve</span>
-          </h2>
-          <p className="max-w-md text-xl text-neutral-400 font-medium pb-2">
-            We understand the distinct workflows, speed, and compliance needs of different global markets.
-          </p>
-        </div>
-
-        <div className="space-y-0 border-b border-neutral-800">
-          {[
-            {
-              title: 'Indian Cinema',
-              for: 'Kollywood, Bollywood, Tollywood',
-              link: '/indian-film-desk',
-              img: 'https://images.pexels.com/photos/36847090/pexels-photo-36847090.jpeg',
-              desc: 'Film productions looking for song shoots, overseas schedules, second-unit filming, action inserts, romantic locations and Sri Lankan cultural access.',
-            },
-            {
-              title: 'Europe',
-              for: 'Docs, Commercials, Factual TV',
-              link: '/europe',
-              img: 'https://images.pexels.com/photos/11677392/pexels-photo-11677392.jpeg',
-              desc: 'Documentary crews, public broadcasters, art-house productions, commercials, factual TV, branded content requiring reliable Sri Lanka-based support.',
-            },
-            {
-              title: 'North America',
-              for: 'Indie Producers, Streamers',
-              link: '/europe',
-              img: 'https://images.pexels.com/photos/32398194/pexels-photo-32398194.jpeg',
-              desc: 'Canadian and US independent producers, diaspora filmmakers, factual TV teams, streaming documentaries, music videos and commercials.',
-            },
-            {
-              title: 'Hollywood',
-              for: 'US Studios, Streamers',
-              link: '/hollywood',
-              img: 'https://images.pexels.com/photos/8088386/pexels-photo-8088386.jpeg',
-              desc: 'US studios, streamers, production companies and second-unit teams looking for South Asian, tropical, island, jungle, colonial and coastal locations.',
-            },
-          ].map((item, i) => (
-            <Link
-              to={item.link}
-              key={i}
-              className="group relative border-t border-neutral-800 pt-8 pb-12 flex flex-col md:flex-row md:items-center justify-between gap-8 cursor-pointer overflow-hidden block"
-            >
-              <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-12 w-full">
-                <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter group-hover:text-[#FF4A00] transition-colors">
-                  {item.title}
-                </h3>
-                <div className="text-neutral-500 font-medium text-lg md:text-xl uppercase tracking-tight leading-tight">
-                  for <br className="hidden md:block" /> {item.for}
+          <div className="border-y border-neutral-800">
+            {audienceDesks.map((item, index) => (
+              <Link
+                to={item.link}
+                key={item.title}
+                className="group grid gap-6 border-b border-neutral-800 py-7 transition-colors last:border-b-0 hover:border-[#FF4A00] md:grid-cols-[92px_minmax(0,1.1fr)_minmax(260px,0.9fr)_auto] md:items-center md:gap-8"
+              >
+                <div className="flex items-center gap-4 md:block">
+                  <span className="block text-xl font-black text-[#FF4A00]">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className="relative h-20 w-28 overflow-hidden rounded-xl bg-neutral-900 md:mt-5 md:h-24 md:w-full">
+                    <img
+                      src={`${item.image}?auto=compress&cs=tinysrgb&fit=crop&w=600`}
+                      className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                      alt={item.title}
+                    />
+                    <div className="absolute inset-0 bg-neutral-950/20" />
+                  </div>
                 </div>
-                <p className="md:ml-auto max-w-sm text-neutral-400 font-medium leading-snug">{item.desc}</p>
-                <ArrowUpRight className="w-8 h-8 text-neutral-600 group-hover:text-[#FF4A00] transition-colors shrink-0 hidden md:block" />
-              </div>
 
-              {/* Hover image */}
-              <div className="md:absolute top-1/2 left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-full h-[250px] md:w-[450px] md:h-[280px] rounded-2xl overflow-hidden mt-6 md:mt-0 md:opacity-0 md:group-hover:opacity-100 md:scale-95 md:group-hover:scale-100 transition-all duration-500 z-0 pointer-events-none bg-neutral-900">
-                <img
-                  src={`${item.img}?auto=compress&cs=tinysrgb&fit=crop&w=800`}
-                  className="w-full h-full object-cover"
-                  alt={item.title}
-                />
-              </div>
-            </Link>
-          ))}
+                <div>
+                  <span className="mb-3 inline-flex rounded-full border border-neutral-700 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-400">
+                    {item.market}
+                  </span>
+                  <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-white transition-colors group-hover:text-[#FF4A00]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-2xl text-base font-medium leading-relaxed text-neutral-400">
+                    {item.intro}
+                  </p>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+                  <div>
+                    <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.22em] text-[#FF4A00]">
+                      Common shoots
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {item.shoots.map((shoot) => (
+                        <span
+                          key={shoot}
+                          className="rounded-full bg-neutral-900 px-3 py-1.5 text-xs font-bold uppercase tracking-tight text-neutral-300"
+                        >
+                          {shoot}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.22em] text-[#FF4A00]">
+                      We handle
+                    </span>
+                    <ul className="space-y-2">
+                      {item.support.map((support) => (
+                        <li key={support} className="text-sm font-medium leading-snug text-neutral-300">
+                          {support}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.18em] text-white md:justify-end">
+                  Open desk
+                  <ArrowUpRight className="h-5 w-5 text-[#FF4A00] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -328,7 +369,7 @@ export default function Home() {
             to="/services"
             className="border-2 border-white text-white rounded-full px-8 py-4 font-bold uppercase tracking-tight hover:bg-white hover:text-neutral-950 transition-colors flex items-center gap-3 group shrink-0"
           >
-            View All Services <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+            Explore Service Scope <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
           </Link>
         </div>
 
@@ -358,6 +399,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <div className="h-10 md:h-16 bg-[#F4F4F0]" />
 
       {/* ── Full-screen Video Reveal / Why Sri Lanka ── */}
       <ParallaxVideoReveal />
@@ -420,7 +463,7 @@ export default function Home() {
           to="/contact"
           className="bg-neutral-950 text-white rounded-full px-10 md:px-12 py-5 md:py-6 text-xl font-black uppercase tracking-tighter hover:bg-[#FF4A00] transition-colors flex items-center gap-4 group"
         >
-          Request Support <ArrowUpRight className="w-8 h-8 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          Request Production Plan <ArrowUpRight className="w-8 h-8 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
         </Link>
       </section>
     </>

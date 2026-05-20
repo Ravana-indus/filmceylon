@@ -46,6 +46,7 @@ export default function IndianFilmDesk() {
       <PageHero
         title="Indian Film Desk"
         accent="last"
+        eyebrow="Regional desk"
         subtitle="Dedicated line production and fast-track coordination for Kollywood, Bollywood, Tollywood, and Malayalam film schedules in Sri Lanka."
       />
 

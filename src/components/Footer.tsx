@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 
 const navLinks = [
   { label: 'Home', to: '/' },
-  { label: 'Services', to: '/services' },
   { label: 'Indian Film Desk', to: '/indian-film-desk' },
-  { label: 'Hollywood', to: '/hollywood' },
-  { label: 'Europe', to: '/europe' },
+  { label: 'Hollywood & Streamers', to: '/hollywood' },
+  { label: 'Europe & North America', to: '/europe' },
   { label: 'Locations', to: '/locations' },
+  { label: 'Services', to: '/services' },
   { label: 'Permits', to: '/permits' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },

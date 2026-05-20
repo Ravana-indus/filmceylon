@@ -47,6 +47,7 @@ export default function Hollywood() {
       <PageHero
         title="Hollywood & Streamers"
         accent="last"
+        eyebrow="Studio-facing desk"
         subtitle="Professional local production services, robust compliance, and line production oversight built for US studios, streaming platforms, and independent features."
       />
 

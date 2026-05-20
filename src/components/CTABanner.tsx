@@ -20,16 +20,16 @@ export default function CTABanner({
 
   return (
     <section
-      className={`py-32 px-6 md:px-12 text-center flex flex-col items-center ${
+      className={`py-24 md:py-32 px-6 md:px-12 text-center flex flex-col items-center ${
         isDark ? 'bg-neutral-950 text-[#F4F4F0]' : 'bg-[#F4F4F0] text-neutral-950'
       }`}
     >
-      <h2 className="text-[12vw] md:text-[7vw] font-black uppercase tracking-tighter leading-[0.85] mb-8">
+      <h2 className="text-[13vw] sm:text-[11vw] md:text-[7vw] font-black uppercase tracking-tighter leading-[0.88] mb-6 md:mb-8">
         {headline}
       </h2>
 
       <p
-        className={`max-w-2xl text-xl md:text-2xl font-medium mb-12 ${
+        className={`max-w-2xl text-lg md:text-2xl font-medium mb-10 md:mb-12 ${
           isDark ? 'text-neutral-400' : 'text-neutral-600'
         }`}
       >
@@ -38,7 +38,7 @@ export default function CTABanner({
 
       <Link
         to={buttonHref}
-        className={`inline-flex items-center gap-2 rounded-full px-10 md:px-12 py-5 md:py-6 text-xl font-black uppercase tracking-tighter transition-colors ${
+        className={`inline-flex items-center gap-2 rounded-full px-8 md:px-12 py-4 md:py-6 text-base md:text-xl font-black uppercase tracking-tighter transition-colors ${
           isDark
             ? 'bg-[#FF4A00] text-white hover:bg-white hover:text-neutral-950'
             : 'bg-neutral-950 text-white hover:bg-[#FF4A00]'
