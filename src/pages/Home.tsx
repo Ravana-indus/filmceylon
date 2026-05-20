@@ -231,7 +231,7 @@ export default function Home() {
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.1, ease }}
-              className="max-w-4xl text-[clamp(4.2rem,12.6vw,9.45rem)] font-black uppercase tracking-tighter leading-[0.9]"
+              className="max-w-4xl text-[clamp(2rem,10.5vw,4rem)] md:text-[clamp(4.2rem,12.6vw,9.45rem)] font-black uppercase tracking-tighter leading-[0.9]"
             >
               Local access.
               <br />
