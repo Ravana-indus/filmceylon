@@ -32,7 +32,7 @@ const teamMembers = [
     credentials: "BA Motion Pictures - Darmstadt University of Applied Sciences, Germany",
     desc: "Pioneering cross-border production workflows and bringing rigorous European cinematic standards to South Asian film operations.",
     link: "https://www.imdb.com/name/nm9629416/?ref_=ext_shr_lnk",
-    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://xbnsztyfyrhrdqhbboip.supabase.co/storage/v1/object/public/PublicImg/other/PNG%20to%20WEBP%20Conversion.webp?auto=compress&cs=tinysrgb&w=800",
     tc: "01"
   },
   {

@@ -125,13 +125,13 @@ export default function Navbar() {
             </div>
 
             {/* Nav Links */}
-            <div className="flex-1 flex flex-col justify-center px-6 gap-1 overflow-y-auto">
+            <div className="flex-1 flex flex-col justify-center px-6 gap-2 overflow-y-auto">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
                   onClick={() => setMenuOpen(false)}
-                  className={`block text-[12vw] md:text-[8vw] font-black uppercase tracking-tighter leading-[0.9] transition-colors ${
+                  className={`block text-[clamp(2rem,8.5vw,3rem)] md:text-[clamp(3rem,6vw,5rem)] font-black uppercase tracking-tighter leading-[0.95] transition-colors ${
                     location.pathname === link.to ? 'text-[#FF4A00]' : 'hover:text-[#FF4A00]'
                   }`}
                 >
